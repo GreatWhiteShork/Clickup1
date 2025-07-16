@@ -26,12 +26,20 @@
 
     <script src="https://unpkg.com/@rive-app/canvas"></script>
     <script>
+
+      var listOfRives = [
+        {name: "chameleon_strikes.riv", state: "chameleon"}
+      ];
+
+      var randomPick = Math.floor(Math.random() * listOfRives.length);
+      var todaysRive = listOfRives[randomPick];
+      
       const r = new rive.Rive({
-        src: "chameleon_strikes.riv",
+        src: todaysRive.name,
         canvas: document.getElementById("canvas"),
         autoplay: true,
         // artboard: "Arboard", // Optional. If not supplied the default is selected
-        stateMachines: "chameleon",
+        stateMachines: todaysRive.state,
         onLoad: () => {
           // Ensure the drawing surface matches the canvas size and device pixel ratio
           r.resizeDrawingSurfaceToCanvas();
